@@ -8,10 +8,17 @@ You can obtain one at http://mozilla.org/MPL/2.0/.
 */
 #pragma once
 
+#include <memory>
+
+#include "libfive/render/brep/hybrid/hybrid_tree.hpp"
+#include "libfive/render/brep/hybrid/hybrid_neighbors.hpp"
+#include "libfive/render/brep/worker_pool.hpp"
+
 namespace Kernel {
-    enum BRepAlgorithm {
-        DUAL_CONTOURING,
-        ISO_SIMPLEX,
-        HYBRID,
-    };
+
+template <unsigned N>
+using HybridTreePool = WorkerPool<HybridTree<N>, HybridNeighbors<N>, N>;
+
 }   // namespace Kernel
+
+
